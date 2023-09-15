@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Planning Management System</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+    
+<!-- header section starts  -->
+
+<header>
+
+    <div id="menu-bar" class="fas fa-bars"></div>
+
+    <a href="#" class="logo"><span>E</span>vents</a>
+
+    <nav class="navbar">
+        <a href="#home">home</a>
+        <a href="#book">book</a>
+        <a href="#packages">packages</a>
+        <a href="#services">services</a>
+        <a href="#gallery">gallery</a>
+        <a href="#review">review</a>
+        <a href="#contact">contact</a>
+    </nav>
+
+    <div class="icons">
+        <i class="fas fa-search" id="search-btn"></i>
+        <i class="fas fa-user" id="login-btn"></i>
+    </div>
+
+    <form action="" class="search-bar-container">
+        <input type="search" id="search-bar" placeholder="search here...">
+        <label for="search-bar" class="fas fa-search"></label>
+    </form>
+
+</header>
+
+<!-- header section ends -->
+
+<!-- login form container  -->
+
+<div class="login-form-container">
+
+    <i> class="fas fa-times" id="form-close"></i>
+
+    <form action="">
+        <h3>login</h3>
+        <input type="email" class="box" placeholder="enter your email">
+        <input type="password" class="box" placeholder="enter your password">
+        <input type="submit" value="login now" class="btn">
+        <input type="checkbox" id="remember">
+        <label for="remember">remember me</label>
+        <p>forget password? <a href="#">click here</a></p>
+        <p>don't have and account? <a href="#">register now</a></p>
+
+
+        <?php
+
+
+
+    if(isset($_POST["loginnow"])){
+
+        $query = "SELECT * FROM `register` WHERE `password` = '$password' AND `email` = '$email'";
+
+        $result = mysqli_query($conn, $query);
+        if (mysqli_num_rows($result) == 1) {
+
+            echo "<script>alert('Succussfull login to next form')
+                window.open('home.php', '_self');
+                </script>";
+          
+           }else{
+            echo "<script>alert('Failed to login to next form')</script>";
+           }
+           
+        }
+
+?>
+
+<?php
+$server_name="localhost";
+$username="root";
+$password="";
+$database_name="Event_planner";//name of your database
+//database connection string
+$conn = mysql_connect('$localhost:8080', '$root', '','$Event_planner');
+
+if(!$conn)
+{
+die("Connection failed:" .mysql_connect_error());
+}
+
+if(isset($_POST['Submit']))//button name
+{
+$firstname = $_POST['Name'];
+$lastname = $_POST['Email'];
+$country = $_POST['number'];
+$subject = $_POST['subject'];
+$message = $_POST['message'];
+
+// database insert SQL code
+//database table and its values
+$sql = "INSERT INTO `tbl_contacts` (`Name`, `Email`, `number`, `subject,'message')
+VALUES ('$Name', '$Email', '$number', '$subject')";
+
+// insert in database
+if(mysql_query($conn, $sql))
+{
+	echo "Contacts Records Inserted";
+}
+else
+{
+echo "Error: ".$sql."".mysql_error($conn);
+}
+mysql_close($conn);
+}
+
+?>
+    </form>
+
+    
+</div>
+
+<!-- home section starts  -->
+
+<section class="home" id="home">
+
+    <div class="content">
+        <h3>event planning</h3>
+        <p>equipment rental</p>
+        <a href="#" class="btn">discover more</a>
+    </div>
+
+    <div class="controls">
+        <span class="vid-btn active" data-src="C:\Users\Sphelele Mkhize\Desktop\gruop project\gruop project\planning\Sapphire_Event_Management_Company_Profile(360p)_001_001.mp4"></span>
+        <span class="vid-btn" data-src="images/vid-2.mp4"></span>
+        <span class="vid-btn" data-src="images/vid-3.mp4"></span>
+        <span class="vid-btn" data-src="images/vid-4.mp4"></span>
+        <span class="vid-btn" data-src="images/vid-5.mp4"></span>
+    </div>
+
+    <div class="video-container">
+        <video src="C:\Users\Sphelele Mkhize\Desktop\gruop project\gruop project\planning\Sapphire_Event_Management_Company_Profile(360p)_001_001.mp4" id="video-slider" loop autoplay muted></video>
+    </div>
+
+</section>
+
+<!-- home section ends -->
+
+<!-- book section starts  -->
+
+<section class="book" id="book">
+<!-- book section starts  -->
+
+
+    <h1 class="heading">
+        <span>b</span>
+        <span>o</span>
+        <span>o</span>
+        <span>k</span>
+        <span class="space"></span>
+        <span>n</span>
+        <span>o</span>
+        <span>w</span>
+    </h1>
+
+    <div class="row">
+
+        <div class="image">
+            <img src="C:\Users\Sphelele Mkhize\Desktop\gruop project\gruop project\planning\images (16).jfif" alt="">
+        </div>
+
+        <form action="">
+            <div class="inputBox">
+                <h3>Location</h3>
+                <input type="text" placeholder="place name">
+            </div>
+            <div class="inputBox">
+                <h3>how many</h3>
+                <input type="number" placeholder="number of guests">
+            </div>
+            <div class="inputBox">
+                <h3>Main Function</h3>
+                <input type="date">
+            </div>
+            <div class="inputBox">
+                <h3>Collection</h3>
+                <input type="date">
+            </div>
+            <input type="submit" class="btn" value="book now">
+        </form>
+
+    </div>
+
+</section>
+
+<!-- book section ends -->
+
+<!-- packages section starts  -->
+
+<section class="packages" id="packages">
+
+    <h1 class="heading">
+        <span>p</span>
+        <span>a</span>
+        <span>c</span>
+        <span>k</span>
+        <span>a</span>
+        <span>g</span>
+        <span>e</span>
+        <span>s</span>
+    </h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <img src="C:\Users\Sphelele Mkhize\Desktop\gruop project\gruop project\planning\Festival Brides Love_ HenBox _ Festival Brides.jfif" alt="">
+            <div class="content">
+                <h3> <i class="fas fa-map-marker-alt"></i>Parties</h3>
+                <p>entertainment and technical expertise join together to help you celebrate life everyday!</p>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <div class="price"> Qoutations <span></span> </div>
+                <a href="#" class="btn">book now</a>
+            </div>
+        </div>
+
+        <div class="box">
+            <img src="C:\Users\Sphelele Mkhize\Desktop\gruop project\gruop project\planning\PHILADELPHIA BASED EVENT RENTAL COMPANY — Allaire Rentals.jfif" alt="">
+            <div class="content">
+                <h3> <i class="fas fa-map-marker-alt"></i>Weddings </h3>
+                <p>Uniquely design your wedding and make it undeniable remarkable</p>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <div class="price"> Qoutations <span></span> </div>
+                <a href="#" class="btn">book now</a>
+            </div>
+        </div>
+
+        <div class="box">
+            <img src="C:\Users\Sphelele Mkhize\Desktop\gruop project\gruop project\planning\download (4).jfif" alt="">
+            <div class="content">
+                <h3> <i class="fas fa-map-marker-alt"></i> Funerals</h3>
+                <p>Let us take care of all the arrangements on your behalf </p>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <div class="price"> Qoutations <span></span> </div>
+                <a href="#" class="btn">book now</a>
+            </div>
+        </div>
+
+        <div class="box">
+            <img src="C:\Users\Sphelele Mkhize\Desktop\gruop project\gruop project\planning\Major Sporting Event.jfif" alt="">
+            <div class="content">
+                <h3> <i class="fas fa-map-marker-alt"></i>  Sport Days </h3>
+                <p>Fun and interactive outdoor events</p>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <div class="price"> Qoutations <span></span> </div>
+                <a href="#" class="btn">book now</a>
+            </div>
+        </div>
+
+        <div class="box">
+            <img src="C:\Users\Sphelele Mkhize\Desktop\gruop project\gruop project\planning\72'' Round Table.jfif" alt="">
+            <div class="content">
+                <h3> <i class="fas fa-map-marker-alt"></i> conference parties  </h3>
+                <p></p>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <div class="price"> Qoutations<span></span> </div>
+                <a href="#" class="btn">book now</a>
+            </div>
+        </div>
+
+       
+        </div>
+
+    </div>
+
+</section>
+
+<!-- packages section ends -->
+
+<!-- services section starts  -->
+
+<section class="services" id="services">
+
+    <h1 class="heading">
+        <span>s</span>
+        <span>e</span>
+        <span>r</span>
+        <span>v</span>
+        <span>i</span>
+        <span>c</span>
+        <span>e</span>
+        <span>s</span>
+    </h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <i class="fas fa-glass-cheers"></i>
+            <h3>Parties</h3>
+            <p>entertainment and technical expertise join together to help you celebrate life everyday!</p>
+        </div>
+        <div class="box">
+            <i class="fas fa-utensils"></i>
+            <h3>Weddings</h3>
+            <p>Uniquely design your wedding and make it undeniable remarkable</p>
+        </div>
+        <div class="box">
+            <i class="fas fa-dove"></i>
+            <h3> Funerals</h3>
+            <p>Let us take care of all the arrangements on your behalf</p>
+        </div>
+        <div class="box">
+            <i class="fas fa-running"></i>
+            <h3>Sport Days</h3>
+            <p>Fun and interactive outdoor events</p>
+        </div>
+        <div class="box">
+            <i class="fas fa-users"></i>
+            <h3>conference parties</h3>
+            <p></p>
+      
+
+    </div>
+
+</section>
+
+<!-- services section ends -->
+
+<!-- gallery section starts  -->
+
+<section class="gallery" id="gallery">
+
+    <h1 class="heading">
+        <span>g</span>
+        <span>a</span>
+        <span>l</span>
+        <span>l</span>
+        <span>e</span>
+        <span>r</span>
+        <span>y</span>
+    </h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <img src="C:\Users\Sphelele Mkhize\Desktop\gruop project\gruop project\planning\Outdoor party.jfif" alt="">
+            <div class="content">
+                <h3>Quality Equipment</h3>
+                <p>choose your theme color and let us provide you with the suitable equipment.</p>
+                <a href="#" class="btn">see more</a>
+            </div>
+        </div>
+        <div class="box">
+            <img src="C:\Users\Sphelele Mkhize\Desktop\gruop project\gruop project\planning\IMG_20220826_111223.jpg" alt="">
+            <div class="content">
+                <h3>Quality Equipment</h3>
+                <p>The best sound system and flooring stage with different sizes.</p>
+                <a href="#" class="btn">see more</a>
+            </div>
+        </div>
+        <div class="box">
+            <img src="C:\Users\Sphelele Mkhize\Desktop\gruop project\gruop project\planning\images (10).jfif" alt="">
+            <div class="content">
+                <h3>Quality Equipment</h3>
+                <p>With no installation needed, it's easy to refresh your the space whenever inspiration strikes. Get instant flooring finished with overlocked edging</p>
+                <a href="#" class="btn">see more</a>
+            </div>
+        </div>
+        <div class="box">
+            <img src="C:\Users\Sphelele Mkhize\Desktop\gruop project\gruop project\planning\IMG_20220826_111115.jpg" alt="">
+            <div class="content">
+                <h3>Quality Equipment</h3>
+                <p>A great choice for outdoor events that need a covered venue or backup shelter.</p>
+                <a href="#" class="btn">see more</a>
+            </div>
+        </div>
+        <div class="box">
+            <img src="C:\Users\Sphelele Mkhize\Desktop\gruop project\gruop project\planning\IMG_20220826_111005.jpg" alt="">
+            <div class="content">
+                <h3>Quality Equipment</h3>
+                <p>Event Furniture, We provide furniture for all types of events.</p>
+                <a href="#" class="btn">see more</a>
+            </div>
+        </div>
+        <div class="box">
+            <img src="C:\Users\Sphelele Mkhize\Desktop\gruop project\gruop project\planning\IMG_20220826_111437.jpg" alt="">
+            <div class="content">
+                <h3>Quality Equipment</h3>
+                <p>Wide Range of Portable Toilets.</p>
+                <a href="#" class="btn">see more</a>
+            </div>
+        </div>
+        <div class="box">
+            <img src="C:\Users\Sphelele Mkhize\Desktop\gruop project\gruop project\planning\IMG_20220826_111156.jpg" alt="">
+            <div class="content">
+                <h3>Quality Equipment</h3>
+                <p>Rental trailers are perfect to have on-site if you are. High-end events deserve a high-end experience</p>
+                <a href="#" class="btn">see more</a>
+            </div>
+        </div>
+        <div class="box">
+            <img src="C:\Users\Sphelele Mkhize\Desktop\gruop project\gruop project\planning\IMG_20220826_111405.jpg" alt="">
+            <div class="content">
+                <h3>Quality Equipment</h3>
+                <p>we have a large variety of Event Rentals for your function to choose from. From tables and chairs to draping and linen.</p>
+                <a href="#" class="btn">see more</a>
+            </div>
+        </div>
+        <div class="box">
+            <img src="C:\Users\Sphelele Mkhize\Desktop\gruop project\gruop project\planning\images (7).jfif" alt="">
+            <div class="content">
+                <h3>Quality Equipment</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, tenetur.</p>
+                <a href="#" class="btn">see more</a>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- gallery section ends -->
+
+<!-- review section starts  -->
+
+<section class="review" id="review">
+
+    <h1 class="heading">
+        <span>r</span>
+        <span>e</span>
+        <span>v</span>
+        <span>i</span>
+        <span>e</span>
+        <span>w</span>
+    </h1>
+
+    <div class="swiper-container review-slider">
+
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+                <div class="box">
+                    <img src="C:\Users\Sphelele Mkhize\Desktop\gruop project\gruop project\planning\a4d43322-f6c7-4f58-910f-362d7c163dc2.jfif"">
+                    <h3>Brain Donavin</h3>
+                    <p>This is a very great site easy to navigate and the event planner responds with in hours</p>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="box">
+                    <img src="images/pic2.png" alt="">
+                    <h3>Zoe Manhathen 
+                    <p>“the event planner was extremely helpful with everything from beginning to end</p>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="box">
+                    <img src="images/pic3.png" alt="">
+                    <h3>vila miller</h3>
+                    <p>some equipment were limited </p>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="box">
+                    <img src="images/pic4.png" alt="">
+                    <h3>pearl mint</h3>
+                    <p>a very helpful site</p>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- review section ends -->
+
+<!-- contact section starts  -->
+
+<section class="contact" id="contact">
+    
+    <h1 class="heading">
+        <span>c</span>
+        <span>o</span>
+        <span>n</span>
+        <span>t</span>
+        <span>a</span>
+        <span>c</span>
+        <span>t</span>
+    </h1>
+
+    <div class="row">
+
+        <div class="image">
+            <img src="C:\Users\Sphelele Mkhize\Desktop\gruop project\gruop project\planning\contact-us-concept-illustration_114360-2299.webp" alt="">
+        </div>
+
+        <form action="">
+            <div class="inputBox">
+                <input type="text" placeholder="name">
+                <input type="email" placeholder="email">
+            </div>
+            <div class="inputBox">
+                <input type="number" placeholder="number">
+                <input type="text" placeholder="subject">
+            </div>
+            <textarea placeholder="message" name="" id="" cols="30" rows="10"></textarea>
+            <input type="submit" class="btn" value="send message">
+        </form>
+
+    </div>
+    
+</section>
+
+<!-- contact section ends -->
+
+<!-- brand section  -->
+<section class="brand-container">
+
+    <div class="swiper-container brand-slider">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="images/1.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="images/2.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="images/3.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="images/4.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="images/5.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="images/6.jpg" alt=""></div>
+        </div>
+    </div>
+
+</section>
+
+<!-- footer section  -->
+
+<section class="footer">
+
+    <div class="box-container">
+
+        <div class="box">
+            <h3>about us</h3>
+            <p>Our goal is to be the only event planning company you’ll ever need. While we can do all types of events, Parties, Weddings, Sport Days, Funerals,Rental of Equipment, Business anniversaries and other corporate events are our specialty. We take pride in knowing that our approach to planning events has one sole focus – your business.</p>
+        </div>
+        <div class="box">
+            <h3>branch locations</h3>
+            <a href="#">Durban</a>
+            <a href="#">Johannesburg</a>
+            <a href="#">Western Cape</a>
+            <a href="#">Eastern Cape</a>
+        </div>
+        <div class="box">
+            <h3>quick links</h3>
+            <a href="#">home</a>
+            <a href="#">book</a>
+            <a href="#">packages</a>
+            <a href="#">services</a>
+            <a href="#">gallery</a>
+            <a href="#">review</a>
+            <a href="#">contact</a>
+        </div>
+        <div class="box">
+            <h3>follow us</h3>
+            <a href="#">facebook</a>
+            <a href="#">instagram</a>
+            <a href="#">twitter</a>
+            <a href="#">linkedin</a>
+        </div>
+
+    </div>
+
+    <h1 class="credit"> created by <span> Sphelele Mkhize </span> | all rights reserved! </h1>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<!-- custom js file link  -->
+<script src="js/script.js"></script>
+
+</body>
+</html>
